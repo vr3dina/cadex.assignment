@@ -15,34 +15,28 @@ void CurvresManager::generate_curves(int curves_cnt, double max_radius, double m
 	uniform_real_distribution<> radius_distr(0, max_radius);
 	uniform_real_distribution<> step_distr(0, max_step);
 
-	int circle_cnt = 0,
-		ellipse_cnt = 0,
-		helix_cnt = 0;
-
-	auto is_each_generated = [&]() { return circle_cnt * ellipse_cnt * helix_cnt != 0; };
-	auto is_all_generated = [&]() { return circle_cnt + ellipse_cnt + helix_cnt >= curves_cnt; };
+	curves.reserve(curves_cnt);
+	curves.push_back(make_shared<Circle>(radius_distr(gen)));
+	curves.push_back(make_shared<Ellipse>(radius_distr(gen), radius_distr(gen)));
+	curves.push_back(make_shared<Helix>(radius_distr(gen), step_distr(gen)));
 
 	srand(time(NULL));
-	curves.reserve(curves_cnt);
-	do
+	for (int i = 0; i < curves_cnt - 3; i++)
 	{
 		int curve_type = rand() % 3;
 		switch (curve_type)
 		{
 		case 0:
 			curves.push_back(make_shared<Circle>(radius_distr(gen)));
-			circle_cnt++;
 			break;
 		case 1:
 			curves.push_back(make_shared<Ellipse>(radius_distr(gen), radius_distr(gen)));
-			ellipse_cnt++;
 			break;
 		case 2:
 			curves.push_back(make_shared<Helix>(radius_distr(gen), step_distr(gen)));
-			helix_cnt++;
 			break;
 		}
-	} while (!is_each_generated() || !is_all_generated());
+	}
 }
 
 #define SW setw(35) <<
@@ -81,12 +75,6 @@ const vector<circlePtr>& CurvresManager::extract_circles()
 		}
 	}
 	return circles;
-
-	//copy_if(curves.begin(), curves.end(), back_inserter(circles),
-	//	[](curvePtr curve)
-	//	{
-	//		return dynamic_pointer_cast<Circle>(curve) != nullptr;
-	//	});
 }
 
 void CurvresManager::sort_circles()
@@ -97,6 +85,6 @@ void CurvresManager::sort_circles()
 
 double CurvresManager::sum_of_circle_radii() const
 {
-	return accumulate(circles.begin(), circles.end(), 0., 
+	return accumulate(circles.begin(), circles.end(), 0.,
 		[](double init, circlePtr crc) { return init + crc->get_radius(); });
 }
