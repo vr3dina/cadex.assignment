@@ -10,6 +10,8 @@ public:
 	Vec3d get_fst_derivative(double t) const override;
 	Vec3d get_point(double t) const override;
 
+	double get_radius() const;
+
 private:
 	double radius;
 };

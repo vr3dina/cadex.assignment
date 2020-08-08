@@ -24,3 +24,8 @@ Vec3d Circle::get_point(double t) const
 
     return Vec3d{ x, y, z };
 }
+
+double Circle::get_radius() const
+{
+    return radius;
+}
