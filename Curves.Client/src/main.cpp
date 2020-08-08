@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 	cm.print_circles();
 
 	cm.sort_circles();
-	cout << "\n\nSorted radii of circles: " << endl;
+	cout << "\n\nSorted circles by radii: " << endl;
 	cm.print_circles();
 
 	cout << "\n\nSum of circles radii: " << cm.sum_of_circle_radii();
