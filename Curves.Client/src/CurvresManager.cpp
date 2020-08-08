@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <memory>
+#include <numeric>
 
 using namespace std;
 
@@ -92,4 +93,10 @@ void CurvresManager::sort_circles()
 {
 	sort(circles.begin(), circles.end(),
 		[](circlePtr lhs, circlePtr rhs) { return lhs->get_radius() < rhs->get_radius(); });
+}
+
+double CurvresManager::sum_of_circle_radii() const
+{
+	return accumulate(circles.begin(), circles.end(), 0., 
+		[](double init, circlePtr crc) { return init + crc->get_radius(); });
 }

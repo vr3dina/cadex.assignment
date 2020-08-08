@@ -1,9 +1,6 @@
 #include "Curves.h"
 #include "CurvresManager.h"
 #include <iostream>
-#include <vector>
-#include <memory>
-#include <random>
 
 using namespace std;
 
@@ -11,9 +8,8 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	CurvresManager cm;
-	cm.generate_curves(10, 20, 5);
+	cm.generate_curves(/*count*/10, /*max radius*/ 20, /*max step*/ 5);
 	cm.print();
-
 
 	auto v = cm.extract_circles();
 	cout << "\nRadii of extracted circles: " << endl;
@@ -22,6 +18,8 @@ int main(int argc, char* argv[])
 	cm.sort_circles();
 	cout << "\n\nSorted radii of circles: " << endl;
 	cm.print_circles();
+
+	cout << "\n\nSum of circles radii: " << cm.sum_of_circle_radii();
 
 	cout << endl << endl;
 	return 0;

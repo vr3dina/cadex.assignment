@@ -16,6 +16,7 @@ public:
 	const std::vector<circlePtr>& get_circles();
 	const std::vector<circlePtr>& extract_circles();
 	void sort_circles();
+	double sum_of_circle_radii() const;
 
 private:
 	std::vector<curvePtr> curves;
