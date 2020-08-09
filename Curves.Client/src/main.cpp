@@ -4,14 +4,13 @@
 
 using namespace std;
 
-
 int main(int argc, char* argv[])
 {
 	CurvresManager cm;
 	cm.generate_curves(/*count*/10, /*max radius*/ 20, /*max step*/ 5);
 	cm.print();
 
-	auto v = cm.extract_circles();
+	cm.extract_circles();
 	cout << "\nRadii of extracted circles: " << endl;
 	cm.print_circles();
 

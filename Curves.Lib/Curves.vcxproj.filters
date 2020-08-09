@@ -47,9 +47,6 @@
     <ClCompile Include="src\Helix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Curve.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Vec3d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

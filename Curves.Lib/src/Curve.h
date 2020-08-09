@@ -15,3 +15,9 @@ protected:
 	std::string _name;
 	Vec3d center = Vec3d(0,0,0);
 };
+
+
+inline std::string Curve::name() const
+{
+	return _name;	
+}

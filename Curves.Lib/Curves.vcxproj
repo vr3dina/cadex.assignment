@@ -152,7 +152,6 @@
     <ClInclude Include="src\Vec3d.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Curve.cpp" />
     <ClCompile Include="src\Helix.cpp" />
     <ClCompile Include="src\Ellipse.cpp" />
     <ClCompile Include="src\Circle.cpp" />
